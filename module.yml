@@ -3,5 +3,5 @@
   gather_facts: False
   tasks:
     - name: Use YUM to update things
-      yum:
+      dnf:
         state: latest
