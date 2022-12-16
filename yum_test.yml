@@ -2,5 +2,5 @@
 - hosts: all
   gather_facts: no
   tasks:
-    - yum: name=cowsay state=present
+    - yum: name=tmux state=present
       become: yes
