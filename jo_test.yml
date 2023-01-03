@@ -1,3 +1,4 @@
+---
 - name: Create a workflow job template
       ansible.controller.tower_workflow_job_template:
        organization: "Org Name"
