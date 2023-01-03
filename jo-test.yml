@@ -1,0 +1,14 @@
+- name: Create a workflow job template
+      ansible.controller.tower_workflow_job_template:
+       organization: "Org Name"
+       name: "Workflow name"
+       allow_simultaneous: true
+       state: "present"
+- name: Create the nodes
+  block:
+    - name: Create the third node
+      ansible.controller.tower_workflow_job_template_node:
+        identifier: first-node
+        organization: "Org Name"
+        workflow: "Workflow name"
+        unified_job_template: "ansibleplaybook"
