@@ -1,0 +1,13 @@
+---
+- name: "Test playbook to sleep for a specified period and then debug"
+  hosts: all
+  gather_facts: false
+  vars:
+    num_messages: 5
+  tasks:
+    - name: Sleep and debug in sequence
+      debug:
+        msg: "This is a debug message: {{ item }}"
+      with_sequence: "count={{ num_messages }}"
+      loop_control:
+        pause: 30
