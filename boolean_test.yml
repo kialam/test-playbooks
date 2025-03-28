@@ -1,0 +1,21 @@
+- name: Test
+  hosts: "{{ target | default('all') }}"
+  connection: local
+  gather_facts: false
+  become: false
+  vars:
+    description: "Found AAP jobs that failed and encountered an error (rc=None).
+          Please check controller task Pod from cluster ({dt.kubernetes.cluster.name}) for details."
+    plan_id: "rh-aap-azure2500pub-a1"
+    truthy:
+      - 'True'
+  tasks:
+    - ansible.builtin.debug:
+        msg: "{{ truthy }}"
+    - ansible.builtin.debug:
+        var: truthy | type_debug
+    - debug:
+        var: extra_settings
+    - debug:
+        var: item.value | type_debug
+      loop: "{{ extra_settings }}"
